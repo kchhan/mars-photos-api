@@ -7,12 +7,11 @@ const KEY = process.env.API_KEY;
 
 // GET photos on search query request
 exports.index = (req, res, next) => {
-	// let query = '?';
-	// let string = '';
-	// for (key in req.body) {
-	// }
+	const rover = req.query.rover;
+	const camera = req.query.camera;
+	const sol = req.query.sol;
 
-	const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${KEY}`;
+	let url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${sol}&camera=${camera}&api_key=${KEY}`;
 
 	axios
 		.get(url)
@@ -31,5 +30,3 @@ exports.index = (req, res, next) => {
 			}
 		});
 };
-
-function stringQuery() {}
